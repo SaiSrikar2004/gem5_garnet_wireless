@@ -32,28 +32,49 @@ This repository contains code and documentation for the research project on impr
 
 ## Installation and Setup
 
-1. **Clone the Repository:**
+Here’s the updated **Installation and Setup** section with the specific instructions for replacing the `Network.py` file and adding the `wireless_mesh_xy.py` file:
 
-   ```bash
-   git clone https://github.com/SaiSrikar2004/gem5_garnet_wireless.git
-   ```
+---
 
-2. **Build gem5:**
+### Installation and Setup
 
-   Follow the standard gem5 build instructions for your architecture to compile with the new Garnet network features.
+#### 1. Clone the Repository
 
-   ```bash
-   scons build/NULL/gem5.debug PROTOCOL=Garnet_standalone
-   ```
+Start by cloning the repository containing the modified Garnet network and configuration files:
 
-3. **Run Simulations:**
+```bash
+git clone https://github.com/SaiSrikar2004/gem5_garnet_wireless.git
+```
 
-   Execute your simulations using the updated Garnet network configuration to test the wireless features and performance.
-   Example Command:
-   ```bash
-   ./build/X86/gem5.opt configs/example/garnet_synth_traffic.py --network=garnet --num-cpus=64 --num-dirs=64 --mesh-rows=8 --sim-cycles=5000000 --injectionrate=0.1 --synthetic=uniform_random --topology=Wireless_Mesh_XY --routing-algorithm=2 --num-packets-max=2 --hybrid-routers=18,21,45,50
-   ```
+#### 2. Replace and Add Configuration Files
 
+After cloning, you need to update your gem5 setup by replacing and adding specific files:
+
+- **Replace `Network.py`:**
+  - Navigate to `gem5_garnet_wireless/configs` and replace the existing `Network.py` file in your gem5 source directory at `configs/network/` with the one from the repository.
+
+- **Add `wireless_mesh_xy.py`:**
+  - Navigate to `gem5_garnet_wireless/configs/topologies/` and copy the `wireless_mesh_xy.py` file to the `configs/topologies/` directory in your gem5 source.
+
+#### 3. Build gem5
+
+After updating the configuration files, proceed to build gem5 with the new Garnet network features:
+
+```bash
+scons build/NULL/gem5.debug PROTOCOL=Garnet_standalone
+```
+
+#### 4. Run Simulations
+
+You can now run simulations using the updated Garnet network configuration to test the wireless features and performance improvements. Here’s an example command:
+
+```bash
+./build/X86/gem5.opt configs/example/garnet_synth_traffic.py --network=garnet --num-cpus=64 --num-dirs=64 --mesh-rows=8 --sim-cycles=5000000 --injectionrate=0.1 --synthetic=uniform_random --topology=Wireless_Mesh_XY --routing-algorithm=2 --num-packets-max=2 --hybrid-routers=18,21,45,50
+```
+
+---
+
+This should help ensure that the correct files are replaced and added to your gem5 setup. Let me know if you need any more details!
 ## Token Passing Mechanism
 
 The static token passing mechanism is used to control access to the wireless medium. Here’s a brief explanation:
