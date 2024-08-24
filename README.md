@@ -30,12 +30,6 @@ This repository contains code and documentation for the research project on impr
   - Further work is needed to address high packet latency issues.
   - Plan to explore optimizations to reduce latency and improve overall network performance.
 
-## Installation and Setup
-
-Here’s the updated **Installation and Setup** section with the specific instructions for replacing the `Network.py` file and adding the `wireless_mesh_xy.py` file:
-
----
-
 ### Installation and Setup
 
 #### 1. Clone the Repository
