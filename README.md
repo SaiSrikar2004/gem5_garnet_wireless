@@ -8,6 +8,7 @@ This repository contains code and documentation for the research project on impr
 
 - **Wireless Integration:**
   - Added wireless features to the Garnet network by modifying internal links to act as broadcasting links, mimicking wireless communication.
+  - Created a wireless topology that allows the specification of hybrid routers as parameters and establishes wireless links between them(--hybrid-routers).
 
 - **Routing Algorithm:**
   - Implemented a hybrid routing algorithm that selects between traditional XY routing and a wireless path based on hop count.
@@ -34,8 +35,7 @@ This repository contains code and documentation for the research project on impr
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/SaiSrikar2004/gem5_garnet_wireless.git
    ```
 
 2. **Build gem5:**
@@ -43,12 +43,16 @@ This repository contains code and documentation for the research project on impr
    Follow the standard gem5 build instructions for your architecture to compile with the new Garnet network features.
 
    ```bash
-   scons build/X86/gem5.opt -j4
+   scons build/NULL/gem5.debug PROTOCOL=Garnet_standalone
    ```
 
 3. **Run Simulations:**
 
    Execute your simulations using the updated Garnet network configuration to test the wireless features and performance.
+   Example Command:
+   ```bash
+   ./build/X86/gem5.opt configs/example/garnet_synth_traffic.py --network=garnet --num-cpus=64 --num-dirs=64 --mesh-rows=8 --sim-cycles=5000000 --injectionrate=0.1 --synthetic=uniform_random --topology=Wireless_Mesh_XY --routing-algorithm=2 --num-packets-max=2 --hybrid-routers=18,21,45,50
+   ```
 
 ## Token Passing Mechanism
 
