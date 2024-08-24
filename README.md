@@ -67,10 +67,12 @@ The static token passing mechanism is used to control access to the wireless med
 
 - The project is ongoing, and updates will be provided as further progress is made.
 - Stay tuned for more improvements and optimizations.
+## Citation
+The modifications for this project were based on the gem5 repository. For reference, please see: [Gem5](https://github.com/gem5/gem5.git).
 
 ## Contact
 
-For questions or contributions, please reach out to [your email or contact information].
+For questions or contributions, please reach out to [srikardokka104@gmail.com].
 
 ---
 
