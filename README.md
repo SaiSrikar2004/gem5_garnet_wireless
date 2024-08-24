@@ -30,9 +30,9 @@ This repository contains code and documentation for the research project on impr
   - Further work is needed to address high packet latency issues.
   - Plan to explore optimizations to reduce latency and improve overall network performance.
 
-### Installation and Setup
+## Installation and Setup
 
-#### 1. Clone the Repository
+### 1. Clone the Repository
 
 Start by cloning the repository containing the modified Garnet network and configuration files:
 
@@ -40,7 +40,7 @@ Start by cloning the repository containing the modified Garnet network and confi
 git clone https://github.com/SaiSrikar2004/gem5_garnet_wireless.git
 ```
 
-#### 2. Replace and Add Configuration Files
+### 2. Replace and Add Configuration Files
 
 After cloning, you need to update your gem5 setup by replacing and adding specific files:
 
@@ -50,7 +50,7 @@ After cloning, you need to update your gem5 setup by replacing and adding specif
 - **Add `wireless_mesh_xy.py`:**
   - Navigate to `gem5_garnet_wireless/configs/topologies/` and copy the `wireless_mesh_xy.py` file to the `configs/topologies/` directory in your gem5 source.
 
-#### 3. Build gem5
+### 3. Build gem5
 
 After updating the configuration files, proceed to build gem5 with the new Garnet network features:
 
@@ -58,7 +58,7 @@ After updating the configuration files, proceed to build gem5 with the new Garne
 scons build/NULL/gem5.debug PROTOCOL=Garnet_standalone
 ```
 
-#### 4. Run Simulations
+### 4. Run Simulations
 
 You can now run simulations using the updated Garnet network configuration to test the wireless features and performance improvements. Here’s an example command:
 
