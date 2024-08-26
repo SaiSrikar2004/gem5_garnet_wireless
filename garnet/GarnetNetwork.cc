@@ -177,7 +177,7 @@ void
 GarnetNetwork::token_change()
 {
         token_id=(token_id+1)%4;
-        std::cout<<"token is "<<a[token_id]<<" at time "<<curTick()<<"\n";
+        std::cout<<"token is "<<m_hybrid_routers[token_id]<<" at time "<<curTick()<<"\n";
         schedule(tokenChangeEvent,nextCycle());
 }
 void

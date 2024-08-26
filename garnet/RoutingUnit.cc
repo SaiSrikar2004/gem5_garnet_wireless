@@ -307,8 +307,7 @@ RoutingUnit::outportComputeCustom(RouteInfo route,
     int hybrid_hops = std::numeric_limits<int>::max();
     int best_hybrid_router = -1;
     int dest_hybrid_router = -1;
-
-    if (my_id == 18 || my_id == 45 || my_id == 50 || my_id == 21) {
+    if (hybrid_connections.find(my_id) != hybrid_connections.end()) {
         // If we're already at a hybrid router, calculate hops directly
         for (int connected_router : hybrid_connections[my_id]) {
             int hops = calculateHops(connected_router, dest_id) + 1; // +1 for the wireless hop
@@ -342,7 +341,7 @@ RoutingUnit::outportComputeCustom(RouteInfo route,
     // Choose the routing method with fewer hops
     if (hybrid_hops < xy_hops) {
         // Use hybrid routing
-        if (my_id == 18 || my_id == 45 || my_id == 50 || my_id == 21) {
+        if (hybrid_connections.find(my_id)!=hybrid_connections.end()) {
                 std::string dir="Wireless_Out"+std::to_string(dest_hybrid_router);
                 std::cout<<"Out dir form routing unit "<<dir<<"/n";
                 return std::make_pair(m_outports_dirn2idx[dir],dest_hybrid_router);

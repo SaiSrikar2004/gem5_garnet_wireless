@@ -146,7 +146,7 @@ class Router : public BasicRouter, public Consumer
     uint32_t functionalWrite(Packet *);
     std::unordered_map<int,std::vector<int>> get_hybrid_connections()
     {
-      return hybrid_connections;
+      return m_network_ptr->hybrid_connections;
     }
     std::unordered_map<int,std::vector<int>>hybrid_connections;
 
@@ -167,6 +167,8 @@ class Router : public BasicRouter, public Consumer
     // Statistical variables required for power computations
     statistics::Scalar m_buffer_reads;
     statistics::Scalar m_buffer_writes;
+    statistics::Scalar m_wireless_request;
+    statistics::Scalar m_wireless_transfer;
 
     statistics::Scalar m_sw_input_arbiter_activity;
     statistics::Scalar m_sw_output_arbiter_activity;

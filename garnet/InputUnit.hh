@@ -161,6 +161,10 @@ class InputUnit : public Consumer
     { return m_num_buffer_reads[vnet]; }
     double get_buf_write_activity(unsigned int vnet) const
     { return m_num_buffer_writes[vnet]; }
+    double get_wireless_req_activity(unsigned int vnet) const
+    { return m_wireless_request[vnet]; }
+    double get_wireless_transfer_activity(unsigned int vnet) const
+    { return m_wireless_transfer[vnet]; }
 
     bool functionalRead(Packet *pkt, WriteMask &mask);
     uint32_t functionalWrite(Packet *pkt);
@@ -182,6 +186,8 @@ class InputUnit : public Consumer
     // Statistical variables
     std::vector<double> m_num_buffer_writes;
     std::vector<double> m_num_buffer_reads;
+    std::vector<double> m_wireless_request;
+    std::vector<double> m_wireless_transfer;
 };
 
 } // namespace garnet

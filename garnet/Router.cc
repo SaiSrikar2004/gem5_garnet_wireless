@@ -208,6 +208,16 @@ Router::regStats()
 {
     BasicRouter::regStats();
 
+    m_wireless_request
+        .name(name()+".wireless_req")
+        .flags(statistics::nozero)
+    ;
+
+    m_wireless_transfer
+        .name(name()+".wireless_recived")
+        .flags(statistics::nozero)
+    ;
+
     m_buffer_reads
         .name(name() + ".buffer_reads")
         .flags(statistics::nozero)
@@ -241,6 +251,8 @@ Router::collateStats()
         for (int i = 0; i < m_input_unit.size(); i++) {
             m_buffer_reads += m_input_unit[i]->get_buf_read_activity(j);
             m_buffer_writes += m_input_unit[i]->get_buf_write_activity(j);
+            m_wireless_request+=m_input_unit[i]->get_wireless_req_activity(j);
+            m_wireless_transfer+=m_input_unit[i]->get_wireless_transfer_activity(j);
         }
     }
 

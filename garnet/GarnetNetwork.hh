@@ -157,7 +157,7 @@ class GarnetNetwork : public Network
     void update_traffic_distribution(RouteInfo route);
     int getNextPacketID() { return m_next_packet_id++; }
     void token_change();
-    int get_token_id() {return a[token_id];}
+    int get_token_id() {return m_hybrid_routers[token_id];}
     int token_id=0;
     EventFunctionWrapper tokenChangeEvent;
     std::vector<int> m_hybrid_routers;

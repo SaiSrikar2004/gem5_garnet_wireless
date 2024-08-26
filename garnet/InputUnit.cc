@@ -51,9 +51,13 @@ InputUnit::InputUnit(int id, PortDirection direction, Router *router)
     const int m_num_vcs = m_router->get_num_vcs();
     m_num_buffer_reads.resize(m_num_vcs/m_vc_per_vnet);
     m_num_buffer_writes.resize(m_num_vcs/m_vc_per_vnet);
+    m_wireless_request.resize(m_num_vcs/m_vc_per_vnet);
+    m_wireless_transfer.resize(m_num_vcs/m_vc_per_vnet);
     for (int i = 0; i < m_num_buffer_reads.size(); i++) {
         m_num_buffer_reads[i] = 0;
         m_num_buffer_writes[i] = 0;
+        m_wireless_request[i]=0;
+        m_wireless_transfer[i]=0;
     }
 
     // Instantiating the virtual channels
@@ -140,6 +144,15 @@ InputUnit::wakeup()
         // any flit that is written will be read only once
         m_num_buffer_writes[vnet]++;
         m_num_buffer_reads[vnet]++;
+        std::string wireless="Wireless_Out";
+        if(m_router->getOutportDirection(virtualChannels[vc].get_outport()).find(wireless)!=std::string::npos)
+        {
+            m_wireless_request[vnet]++;
+        }
+        if(m_direction=="Wireless_In")
+        {
+            m_wireless_transfer[vnet]++;
+        }
 
         Cycles pipe_stages = m_router->get_pipe_stages();
         if (pipe_stages == 1) {
